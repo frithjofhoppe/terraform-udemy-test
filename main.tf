@@ -8,6 +8,10 @@ terraform {
 }
 
 provider "kubernetes" {
+  host = var.HOST
+  cluster_ca_certificate = base64decode(var.CLUSTER_CA)
+  client_certificate     = base64decode(var.CLIENT_CA)
+  client_key             = base64decode(var.CLIENT_KEY)
 }
 
 resource "kubernetes_manifest" "udemy-sa" {
